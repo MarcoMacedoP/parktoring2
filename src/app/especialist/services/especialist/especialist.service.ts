@@ -23,11 +23,15 @@ export class EspecialistService {
   getEspecialist() {
     return this.auth.hasUser().pipe(
       mergeMap(u =>
-        this.firestore.collection('Doctores',
+        this.firestore.collection<Especialist[]>('Doctores',
           (ref => ref.where('uid', '==', u.uid))
         ).get()
       ),
-      map(e => e.docs[0].data())
+      map((e: any) => {
+        const especialist: Especialist = e.docs[0].data();
+        return especialist;
+
+      })
     )
 
 

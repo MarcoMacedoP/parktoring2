@@ -4,6 +4,7 @@ import { PacientsComponent } from "./components/pacients/pacients.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { PacientComponent } from "./components/pacient/pacient.component";
 import { LayoutComponent } from "./components/layout/layout.component";
+import { ProfileComponent } from './components/profile/profile.component';
 const routes: Routes = [
   {
     path: "",
@@ -12,6 +13,10 @@ const routes: Routes = [
       {
         path: "",
         component: DashboardComponent,
+      },
+      {
+        path: "perfil",
+        component: ProfileComponent
       },
       {
         path: "pacientes",
@@ -28,4 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class EspecialistRoutingModule {}
+export class EspecialistRoutingModule { }

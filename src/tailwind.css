@@ -2,36 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-.button{
+.button {
   @apply cursor-pointer text-blue-500 p-2 mr-4 text-center rounded-lg transition-colors duration-300;
 }
-.button:hover, .button:focus, .button:active .button:focus-within{
- @apply bg-blue-100;
+.button:hover,
+.button:focus,
+.button:active .button:focus-within {
+  @apply bg-blue-100;
 }
 
 .button.primary {
-  transition-property: background-color, box-shadow ;
-  @apply   ease-in bg-purple-500 w-full h-12 shadow-md text-white rounded-lg flex items-center justify-center;
+  transition-property: background-color, box-shadow;
+  @apply ease-in bg-purple-500 w-full h-12 shadow-md text-white rounded-lg flex items-center justify-center;
 }
-.button.primary:hover{
+.button.primary:hover {
   @apply bg-purple-600 shadow-xl;
 }
 
-.landing-section{
+.landing-section {
   @apply h-screen flex w-full items-start justify-around pb-4;
 }
-.landing-section article{
-  @apply  flex flex-col justify-center;
+.landing-section article {
+  @apply flex flex-col justify-center;
   width: 33%;
   height: 100%;
 }
-.landing-section h2{
+.landing-section h2 {
   @apply text-3xl text-blue-800 font-bold mb-4;
 }
-.landing-section .button{
+.landing-section .button {
   @apply mt-4;
 }
-.landing-section img{
+.landing-section img {
   @apply object-cover rounded-lg;
   width: 50%;
   height: 85%;
@@ -40,14 +42,14 @@
   @apply flex flex-col mb-2 relative;
 }
 
-.input-container input{
+.input-container input {
   transition-property: margin-top, border-bottom-color, padding;
   @apply border-b-2 z-10   duration-300 border-blue-200 mb-2;
 }
-.input-container input:focus{
+.input-container input:focus {
   @apply border-blue-600 p-1;
 }
-.input-container label{
+.input-container label {
   @apply text-sm text-gray-600 relative;
   bottom: -2px;
 }
@@ -61,19 +63,27 @@
   @apply rounded-full shadow-xl float-button w-16 h-16 bg-transparent transition-opacity duration-300 rounded-full cursor-pointer fixed flex justify-center items-center text-xl text-white bg-blue-500;
 }
 
-.float-button:hover, .float-button:active, .float-button:focus {
-  @apply  opacity-50;
+.float-button:hover,
+.float-button:active,
+.float-button:focus {
+  @apply opacity-50;
 }
-input, .input{
+input,
+.input {
   @apply p-2 border-2 border-gray-300 h-8 w-full rounded-lg transition transition-colors duration-200;
 }
-input:focus, input:active, .input:focus, .input:active, textarea:focus, textarea:active {
-    @apply border-blue-500;
+input:focus,
+input:active,
+.input:focus,
+.input:active,
+textarea:focus,
+textarea:active {
+  @apply border-blue-500;
 }
-.input-text{
+.input-text {
   @apply text-gray-600 mb-1;
 }
-.input-button{
+.input-button {
   @apply h-8 flex items-center justify-center;
 }
 textarea {

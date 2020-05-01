@@ -12,10 +12,12 @@
     </div>
   </a>
   <div class="flex items-center w-40 justify-between">
-    <img
-      class="bg-gray-400 rounded-full w-12 h-12 object-cover object-center"
-      src="https://image.shutterstock.com/image-photo/portrait-smiling-red-haired-millennial-260nw-1194497251.jpg"
-    />
+    <a
+      routerLink="/especialista/perfil"
+      class="rounded-full w-12 h-12 block overflow-hidden"
+    >
+      <img class="bg-gray-400 object-cover object-center" [src]="profilePic" />
+    </a>
     <div (click)="toggleMenu()">
       <p
         class="cursor-pointer font-bold text-gray-700 rounded-full w-12 h-12 flex items-center justify-center transition-colors duration-500 hover:bg-gray-100 hover:text-blue-500"

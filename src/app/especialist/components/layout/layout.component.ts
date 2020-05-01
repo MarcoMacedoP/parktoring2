@@ -15,10 +15,9 @@ export class LayoutComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router, especialist: EspecialistService) {
     especialist.getEspecialist().subscribe(
       (data) => {
-        debugger
+        this.profilePic = data.Foto;
       }
     );
-
   }
 
   ngOnInit(): void { }

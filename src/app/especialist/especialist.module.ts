@@ -9,6 +9,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { PacientComponent } from "./components/pacient/pacient.component";
 import { LayoutComponent } from "./components/layout/layout.component";
 import { AddDateModalComponent } from "./components/add-date-modal/add-date-modal.component";
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AddDateModalComponent } from "./components/add-date-modal/add-date-moda
     PacientComponent,
     LayoutComponent,
     AddDateModalComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,40 @@
+<article *ngIf="especialista" class="p-8">
+  <div class="flex w-1/2 items-center">
+    <img
+      [src]="especialista.Foto"
+      class="rounded-full h-40 w-40 object-cover object-center mr-4"
+      alt=""
+    />
+    <div>
+      <h1 class="text-xl text-blue-500">{{ especialista.Nombre }}</h1>
+      <p class="text-gray-500">{{ especialista.Especialidad }}</p>
+    </div>
+  </div>
+  <div class="flex flex-col rounded-md bg-gray-300 mt-4 p-4 w-1/2">
+    <p class="text-blue-600 text-md font-semibold mb-2">Informacion personal</p>
+    <p>
+      <strong>Consultorio</strong>
+      {{ especialista.Consultorio }}
+    </p>
+    <p>
+      <strong>Domicilio </strong>
+      {{ especialista.Domicilio }}
+    </p>
+    <p *ngIf="especialista.Edad">
+      <strong>Edad</strong>
+      {{ especialista.Edad }} años
+    </p>
+    <p><strong>Correo electronico </strong>{{ especialista.Correo }}</p>
+    <p>
+      <strong>Especialidad</strong>
+      {{ especialista.Especialidad }}
+    </p>
+    <p>
+      <strong>Sexo</strong>
+      {{ especialista.Sexo }}
+    </p>
+  </div>
+  <div class="w-1/2 mt-4">
+    <button class="button primary">Editar perfil</button>
+  </div>
+</article>
