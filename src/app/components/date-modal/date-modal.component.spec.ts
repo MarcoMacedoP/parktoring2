@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { DateModalComponent } from './date-modal.component';
+import { DateModalComponent } from "./date-modal.component";
 
-describe('DateModalComponent', () => {
+describe("DateModalComponent", () => {
   let component: DateModalComponent;
   let fixture: ComponentFixture<DateModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DateModalComponent ]
-    })
-    .compileComponents();
+      declarations: [DateModalComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('DateModalComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

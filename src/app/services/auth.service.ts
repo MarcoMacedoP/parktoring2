@@ -1,6 +1,9 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from "@angular/fire/firestore";
 type userParams = {
   email: string;
   password: string;
@@ -10,9 +13,12 @@ type userParams = {
 })
 export class AuthService {
   static user: firebase.User;
-  especialistCollection: AngularFirestoreCollection<{}>
-  constructor(private auth: AngularFireAuth, private firestore: AngularFirestore) {
-    this.especialistCollection = firestore.collection('Doctores');
+  especialistCollection: AngularFirestoreCollection<{}>;
+  constructor(
+    private auth: AngularFireAuth,
+    private firestore: AngularFirestore
+  ) {
+    this.especialistCollection = firestore.collection("Doctores");
   }
 
   async login({ email, password }: userParams) {
@@ -20,7 +26,7 @@ export class AuthService {
     AuthService.user = result.user;
   }
 
-  async signUp({ email, password, name }: userParams & { name: string; }) {
+  async signUp({ email, password, name }: userParams & { name: string }) {
     const result = await this.auth.createUserWithEmailAndPassword(
       email,
       password
@@ -29,8 +35,8 @@ export class AuthService {
     const user = await this.especialistCollection.add({
       uid: result.user.uid,
       name,
-      email
-    })
+      email,
+    });
     return user;
   }
   hasUser() {

@@ -20,12 +20,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
   async goSignup() {
     await this.router.navigateByUrl("/auth/sign");
   }
   async onSubmit() {
     await this.auth.login(this.loginForm.value);
-    this.router.navigate(['/especialista/'])
+    this.router.navigate(["/especialista/"]);
   }
 }

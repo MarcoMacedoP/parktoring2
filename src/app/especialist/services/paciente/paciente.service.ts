@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 
 export interface PacienteInterface {
-  id:string;
+  id: string;
   name: string;
   lastTest: string;
 }
@@ -16,37 +16,37 @@ export class PacienteService {
   getAll() {
     return [
       {
-        id: '1',
+        id: "1",
         name: "Mustafar Hionojosa",
         lastTest: "11/04/2020",
       },
       {
-        id: '1',
+        id: "1",
         name: "Mustafar Hionojosa",
         lastTest: "11/04/2020",
       },
       {
-        id: '1',
+        id: "1",
         name: "Mustafar Hionojosa",
         lastTest: "11/04/2020",
       },
       {
-        id: '1',
+        id: "1",
         name: "Mustafar Hionojosa",
         lastTest: "11/04/2020",
       },
       {
-        id: '1',
+        id: "1",
         name: "Mustafar Hionojosa",
         lastTest: "11/04/2020",
       },
       {
-        id: '1',
+        id: "1",
         name: "Mustafar Hionojosa",
         lastTest: "11/04/2020",
       },
       {
-        id: '1',
+        id: "1",
         name: "Mustafar Hionojosa",
         lastTest: "11/04/2020",
       },

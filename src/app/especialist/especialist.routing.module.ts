@@ -4,7 +4,8 @@ import { PacientsComponent } from "./components/pacients/pacients.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { PacientComponent } from "./components/pacient/pacient.component";
 import { LayoutComponent } from "./components/layout/layout.component";
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from "./components/profile/profile.component";
+import { EditProfileComponent } from "./components/edit-profile/edit-profile.component";
 const routes: Routes = [
   {
     path: "",
@@ -16,7 +17,11 @@ const routes: Routes = [
       },
       {
         path: "perfil",
-        component: ProfileComponent
+        component: ProfileComponent,
+      },
+      {
+        path: "editar-perfil",
+        component: EditProfileComponent,
       },
       {
         path: "pacientes",
@@ -33,4 +38,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class EspecialistRoutingModule { }
+export class EspecialistRoutingModule {}

@@ -1,0 +1,47 @@
+<div class="p-8" *ngIf="especialista">
+  <h1 class="text-xl text-blue-500">Editar perfil.</h1>
+  <form [formGroup]="form" class="w-full flex mt-4">
+    <div class="w-1/2">
+      <label for="nombre" class="input-text">Nombre</label>
+      <input id="nombre" formControlName="Nombre" type="text" />
+      <label for="celular" class="input-text">Celular</label>
+      <input id="celular" type="text" formControlName="Celular" />
+      <label for="consultorio" class="input-text">Consultorio</label>
+      <input id="consultorio" type="text" formControlName="Consultorio" />
+      <label for="especialidad" class="input-text">Especialidad</label>
+      <input id="especialidad" type="text" formControlName="Especialidad" />
+      <label for="domicilio" class="input-text">Domicilio</label>
+      <input id="domicilio" type="text" formControlName="Domicilio" />
+      <label for="correo" class="input-text">Correo</label>
+      <input id="correo" type="email" formControlName="Correo" />
+      <a type="menu" class="button primary mt-3" (click)="handleSubmit()">
+        Guardar cambios
+      </a>
+      <a class="button outline mt-2 w-full" routerLink="/especialista/perfil"
+        >Cancelar</a
+      >
+    </div>
+    <div class="relative ml-8 flex flex-col items-center">
+      <div class="rounded-full h-48 w-48 mt-2 overflow-hidden relative">
+        <img
+          [src]="profilePic"
+          alt=""
+          class="w-full h-full object-center object-cover"
+        />
+        <div
+          class="bg-gray-700 h-20 w-full absolute bottom-0 opacity-75 flex items-center cursor-pointer justify-center flex-col"
+        >
+          <fa-icon [icon]="faCamera" class="text-white text-xl"> </fa-icon>
+          <p class="text-xs text-white">Actualizar foto</p>
+          <input
+            #imageInput
+            (change)="handleUpload(imageInput)"
+            class="border-0 p-0 absolute w-full h-full opacity-0 left-0"
+            id="foto"
+            type="file"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
