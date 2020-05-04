@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { faCalendarPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { EspecialistService } from '../../services/especialist/especialist.service';
+import { map, mergeMap } from 'rxjs/operators';
 type date = {
   id: number | string;
   pacient: string;
@@ -43,14 +44,16 @@ export class DashboardComponent implements OnInit {
   faCalendarPlus = faCalendarPlus;
   faSearch = faSearch;
   dates = DATES;
-  pacients;
+  pacients: Pacient[];
+  consultas: Consulta[];
+  hasLoaded = false;
   isAddDateModalOpen = false;
-  constructor(private especialistService: EspecialistService) { }
+  constructor(private especialistService: EspecialistService) {
+    this.getInitials()
+  }
 
   ngOnInit(): void {
-    this.especialistService.getAllPacients().subscribe(
-      pacients => this.pacients
-    )
+
   }
   openAddDateModal() {
     this.isAddDateModalOpen = true;
@@ -58,4 +61,21 @@ export class DashboardComponent implements OnInit {
   closeOpenDateModal() {
     this.isAddDateModalOpen = false;
   }
+  getInitials() {
+    this.especialistService.getAllPacients().subscribe(this.setInitials);
+  }
+  setInitials = (pacients: Pacient[]) => {
+    this.pacients = pacients;
+    const pacientsIds = pacients.map(p => p.id)
+    this.especialistService.getConsultasByIds(pacientsIds).subscribe(
+      consultas => {
+        this.consultas = consultas;
+        this.hasLoaded = true;
+        console.log(consultas)
+      }
+    );
+
+
+  }
+
 }

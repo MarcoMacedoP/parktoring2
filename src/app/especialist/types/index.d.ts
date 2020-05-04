@@ -10,3 +10,20 @@ declare interface Especialist {
   uid: string;
   Celular: string;
 }
+
+declare interface Pacient {
+  id: string;
+  "Apellido Paterno": string;
+  Edad: string;
+  Telefono: string;
+  consultas: Consulta[];
+}
+
+
+declare interface Consulta {
+  id: string;
+  Fecha: string;
+  indice: number[];
+  medio: number[];
+  pulgar: number[];
+}
