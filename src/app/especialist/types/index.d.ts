@@ -13,6 +13,7 @@ declare interface Especialist {
 
 declare interface Pacient {
   id: string;
+  date: Date;
   "Apellido Paterno": string;
   Edad: string;
   Telefono: string;
