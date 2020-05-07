@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { EspecialistService } from "../../services/especialist/especialist.service";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { Router } from '@angular/router';
 @Component({
   selector: "app-edit-profile",
   templateUrl: "./edit-profile.component.html",
@@ -15,7 +16,8 @@ export class EditProfileComponent implements OnInit {
 
   constructor(
     private especialistService: EspecialistService,
-    formBuilder: FormBuilder
+    formBuilder: FormBuilder,
+    private router: Router
   ) {
     especialistService.getEspecialist().subscribe((e) => {
       this.especialista = e;
@@ -26,7 +28,7 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   handleUpload(imageInput: any) {
     const file = imageInput.files[0];
@@ -46,6 +48,6 @@ export class EditProfileComponent implements OnInit {
       })
       .toPromise();
     const data = await result;
-    console.log(data);
+    this.router.navigate(['/especialista/perfil/'])
   }
 }

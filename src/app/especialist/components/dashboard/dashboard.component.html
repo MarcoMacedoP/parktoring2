@@ -6,6 +6,7 @@
 
 <section
   class="mt-6 flex mb-2 w-3/3 items-center justify-around relative mx-auto"
+  *ngIf="hasLoaded"
 >
   <div class="flex flex-col w-1/3">
     <p class="input-text">
@@ -23,7 +24,7 @@
   <input type="date" />
 </section>
 <!-- citas proximas -->
-<section class="flex justify-between px-8 w-full mt-8">
+<section class="flex justify-between px-8 w-full mt-8" *ngIf="hasLoaded">
   <div class="w-1/3">
     <p>Calendario de citas.</p>
   </div>
@@ -32,15 +33,15 @@
     <div class="mt-4">
       <div
         class="w-full block shadow-md bg-gray-300 my-2 rounded-md p-2 cursor-pointer hover:bg-gray-400 transition-colors duration-300"
-        *ngFor="let date of dates"
+        *ngFor="let consult of consultsWithPacient"
       >
         <a
           class="block"
-          routerLink="{{ '/especialista/pacientes/' + date.pacientId }}"
+          routerLink="{{ '/especialista/pacientes/' + consult.pacient_id }}"
         >
-          <p><span class="text-blue-600">Fecha: </span>{{ date.date }}</p>
+          <p><span class="text-blue-600">Fecha: </span>{{ consult.fecha }}</p>
           <p>
-            <span class="text-blue-600">Paciente: </span> {{ date.pacient }}
+            <span class="text-blue-600">Paciente: </span> {{ consult.name }}
           </p>
         </a>
       </div>
