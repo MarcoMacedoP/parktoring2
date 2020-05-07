@@ -1,101 +1,119 @@
-<section class="px-16 mt-8 flex-col">
-  <div class="flex items-center mb-8">
-    <div class="profile-image"></div>
-    <div class="ml-3 text-blue-500">Nombre del paciente</div>
-  </div>
-  <div class="w-full flex justify-between">
-    <!-- comments section -->
-    <div class="w-1/3 flex flex-col mr-4">
-      <p class="input-text">Comentarios</p>
-      <div class="flex flex-col h-32 overflow-y-scroll comments-section pr-2">
-        <div class="flex w-full items-center">
-          <input type="text" class="w-full" name="" id="" />
-          <button class="button">
-            <fa-icon [icon]="faSearch"></fa-icon>
+<div>
+  <section class="px-16 mt-8 flex-col">
+    <div class="flex items-center mb-8" *ngIf="pacient">
+      <img
+        class="profile-image object-cover"
+        [src]="pacient.profilePhoto"
+        alt=""
+      />
+      <div class="ml-3 text-blue-500">{{ pacient.name }}</div>
+    </div>
+    <div class="w-full flex justify-between">
+      <!-- comments section -->
+      <div class="w-1/3 flex flex-col mr-4">
+        <p class="input-text">Comentarios</p>
+        <div class="flex flex-col h-32 overflow-y-scroll comments-section pr-2">
+          <div class="flex w-full items-center">
+            <input type="text" class="w-full" name="" id="" />
+            <button class="button">
+              <fa-icon [icon]="faSearch"></fa-icon>
+            </button>
+          </div>
+
+          <!-- Lista de comentarios -->
+          <section class="mt-2 flex flex-col">
+            <!-- single comment -->
+            <div
+              class="w-full rounded-md mb-2 bg-gray-200 items-center flex p-2"
+            >
+              <div class="rounded-full h-6 w-6 bg-gray-500"></div>
+              <div class="ml-2 w-2/3">
+                <p class="text-xs text-gray-700">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit
+                </p>
+                <p class="text-xs text-gray-500">Hace 10 días</p>
+              </div>
+            </div>
+            <div
+              class="w-full rounded-md mb-2 bg-gray-200 items-center flex p-2"
+            >
+              <div class="rounded-full h-6 w-6 bg-gray-500"></div>
+              <div class="ml-2 w-2/3">
+                <p class="text-xs text-gray-700">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit
+                </p>
+                <p class="text-xs text-gray-500">Hace 10 días</p>
+              </div>
+            </div>
+            <div
+              class="w-full rounded-md mb-2 bg-gray-200 items-center flex p-2"
+            >
+              <div class="rounded-full h-6 w-6 bg-gray-500"></div>
+              <div class="ml-2 w-2/3">
+                <p class="text-xs text-gray-700">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit
+                </p>
+                <p class="text-xs text-gray-500">Hace 10 días</p>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- Agregar comentario -->
+        <div class="w-full flex flex-col mt-4 pr-4">
+          <textarea
+            placeholder="Tu comentario aquí"
+            class="mt-2 w-full h-16 mb-2"
+          >
+          </textarea>
+          <button type="submit" class="button primary">
+            Comentar
           </button>
         </div>
-
-        <!-- Lista de comentarios -->
-        <section class="mt-2 flex flex-col">
-          <!-- single comment -->
-          <div class="w-full rounded-md mb-2 bg-gray-200 items-center flex p-2">
-            <div class="rounded-full h-6 w-6 bg-gray-500"></div>
-            <div class="ml-2 w-2/3">
-              <p class="text-xs text-gray-700">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit
-              </p>
-              <p class="text-xs text-gray-500">Hace 10 días</p>
-            </div>
-          </div>
-          <div class="w-full rounded-md mb-2 bg-gray-200 items-center flex p-2">
-            <div class="rounded-full h-6 w-6 bg-gray-500"></div>
-            <div class="ml-2 w-2/3">
-              <p class="text-xs text-gray-700">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit
-              </p>
-              <p class="text-xs text-gray-500">Hace 10 días</p>
-            </div>
-          </div>
-          <div class="w-full rounded-md mb-2 bg-gray-200 items-center flex p-2">
-            <div class="rounded-full h-6 w-6 bg-gray-500"></div>
-            <div class="ml-2 w-2/3">
-              <p class="text-xs text-gray-700">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit
-              </p>
-              <p class="text-xs text-gray-500">Hace 10 días</p>
-            </div>
-          </div>
-        </section>
       </div>
-      <!-- Agregar comentario -->
-      <div class="w-full flex flex-col mt-4 pr-4">
-        <textarea
-          placeholder="Tu comentario aquí"
-          class="mt-2 w-full h-16 mb-2"
-        >
-        </textarea>
-        <button type="submit" class="button primary">
-          Comentar
-        </button>
-      </div>
-    </div>
-    <div class="w-full flex">
-      <!-- Grafica -->
-      <div class="w-2/3">
-        <p class="text-blue-500 text-lg">Gráfica inicial</p>
-        <div class="w-full mt-2 rounded-md">
-          <canvas id="realtime" class="w-full h-full">{{ chart }}</canvas>
+      <div class="w-full flex">
+        <!-- Grafica -->
+        <div class="w-2/3">
+          <p class="text-blue-500 text-lg">Gráfica inicial</p>
+          <div class="w-full mt-2 rounded-md">
+            <canvas id="oldestChart" class="w-full h-full">{{
+              oldestChart
+            }}</canvas>
+          </div>
         </div>
       </div>
-      <!-- simbologia -->
-      <div class="flex flex-col ml-4 h-40 items-start justify-end">
-        <p>Dedo pulgar</p>
-        <div class="h-1 w-full bg-green-500"></div>
-        <p>Dedo indice</p>
-        <div class="h-1 w-full bg-blue-500"></div>
-        <p>Dedo medio</p>
-        <div class="h-1 w-full bg-red-600"></div>
-      </div>
     </div>
-  </div>
-  <div class="w-full flex mb-4 mt-4">
-    <div class="w-2/4">
+    <!-- Latest consult chart -->
+    <div class="w-full flex flex-col mb-4 mt-4 h-25">
       <p class="text-blue-500 text-lg">Ultima gráfica</p>
-      <div class="bg-gray-500 w-full h-48 mt-2 rounded-md"></div>
+      <div class="w-2/3 flex items-center h-full mt-2 rounded-md">
+        <canvas id="latestChart" class="w-full h-full">{{
+          latestChart
+        }}</canvas>
+      </div>
     </div>
     <!-- filter by date -->
-    <div class="w-2/6">
+    <div class="w-full" *ngIf="consults.length > 0">
+      <p class="text-blue-500 text-lg">Selecionar cita</p>
       <div class="w-2/3 flex">
-        <input type="date" name="" id="" />
-        <button class="button secondary" type="submit">
-          <fa-icon [icon]="faFilter"></fa-icon>
-        </button>
+        <select>
+          <option
+            *ngFor="let consult of consults"
+            [value]="consult"
+            (click)="onSelection(consult)"
+            >{{ consult.fecha }}</option
+          >
+        </select>
+      </div>
+      <div class="w-full h-25 mt-2 rounded-md">
+        <canvas id="selectedChart" class="w-full h-full block">{{
+          selectedChart
+        }}</canvas>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- float button -->
-<div class="float-button">
-  <fa-icon [icon]="faCalendarPlus"></fa-icon>
+  <!-- float button -->
+  <div class="float-button">
+    <fa-icon [icon]="faCalendarPlus"></fa-icon>
+  </div>
 </div>

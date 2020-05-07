@@ -13,15 +13,14 @@ declare interface Especialist {
 
 declare interface Pacient {
   id: string;
-  date: Date;
   name: string;
-  Edad: string;
-  Telefono: string;
+  profilePhoto: string;
 }
 
 
 declare interface Consulta {
   fecha: number | any;
+  id: string;
   d1: string[];
   d2: string[];
   d3: string[];

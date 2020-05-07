@@ -93,17 +93,69 @@ export class EspecialistService {
         ).get()
       ),
       map(
-        queryResult => queryResult.docs.map((doc: any) => doc.data())
+        queryResult => queryResult.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))
+      ),
+      map(
+        consults => consults.map(c => ({ ...c, fecha: new Date(c.fecha.seconds * 1000) }))
+      )
+    )
+  }
+
+
+  getPacientByID(pacientId: string): Observable<Pacient> {
+    return this.getEspecialistID().pipe(
+      mergeMap(
+        id => this.firestore.collection('Doctores').doc(id).collection('Pacientes').doc(pacientId).get()
+      ),
+      map(
+        queryResult => {
+          const pacient: any = queryResult.data();
+          return pacient;
+        })
+    )
+  }
+
+  getPacientConsultByDate(pacientId: string, date: Date) {
+
+  }
+
+  getPacientOldestConsult(pacientId: string) {
+    return this.getConsultasByPacientID(pacientId).pipe(
+      map(
+        consults => this.filterConsults(consults, 'oldest')
       )
     )
   }
   /**
-   * Retorna un arreglo de pacientes con un arreglo de consultas.
+   * Dado un id de paciente, retorna su consulta mas reciente
    */
-  getPacientsWithConsults() {
-    return forkJoin([this.getAllPacients(), this.getConsultasOfEspecialist()])
+  getPacientLastestConsult(pacientId: string) {
+    return this.getConsultasByPacientID(pacientId).pipe(
+      map(
+        consults => this.filterConsults(consults, 'lastest')
+      )
+    )
   }
 
+  private filterConsults(consults: Consulta[], orderBy: 'lastest' | 'oldest') {
+    let searchedConsult: Consulta | null = null;
+    consults.forEach(consult => {
+      if (!searchedConsult) {
+        searchedConsult = consult;
+        return;
+      }
+      const isOldest = consult.fecha < searchedConsult.fecha;
+
+      if (orderBy === 'lastest') {
+        searchedConsult = isOldest ? searchedConsult : consult;
+        return;
+      }
+      else {
+        searchedConsult = isOldest ? consult : searchedConsult;
+      }
+    });
+    return searchedConsult;
+  }
   /**
    * Retorna un arreglo de las proximas consultas.
    */
